@@ -1,0 +1,32 @@
+version: '3'
+services:
+  server:
+    container_name: server-tsyb
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/usr/app
+    ports:
+      - 9990:9990
+    depends_on:
+      - db
+  client:
+    container_name: client-tsyb
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - ./client:/usr/app
+    ports:
+      - 2000:2000
+    depends_on:
+      - server
+  db:
+    container_name: postgres-tsyb
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: anast06
+      POSTGRES_DB: postgres

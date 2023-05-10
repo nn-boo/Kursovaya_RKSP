@@ -1,0 +1,12 @@
+.dropdown-item:hover{
+    color: black !important;
+}
+
+.img-lot{
+    width: 340px !important;
+    height: 340px !important;
+}
+.card-fix{
+    width: 340px !important;
+    word-wrap: break-word;
+}
